@@ -1,4 +1,4 @@
-node_modules/
-dist/
-serve.mjs
-static.json
+cdp-verify.mjs
+cdp-check.mjs
+rbxfun-*.png
+chrome-cdp*.log
