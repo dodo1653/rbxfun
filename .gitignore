@@ -2,3 +2,5 @@ cdp-verify.mjs
 cdp-check.mjs
 rbxfun-*.png
 chrome-cdp*.log
+cdp-shots.mjs
+node_modules/
