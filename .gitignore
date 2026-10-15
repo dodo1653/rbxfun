@@ -1,6 +1,3 @@
-cdp-verify.mjs
-cdp-check.mjs
-rbxfun-*.png
-chrome-cdp*.log
-cdp-shots.mjs
-node_modules/
+node_modules
+.DS_Store
+.vercel
