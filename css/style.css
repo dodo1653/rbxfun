@@ -849,6 +849,44 @@ html[data-theme='dark'] { --hero-scrim: rgba(4, 10, 29, 0.6); }
 
 
 /* 2026-10-21: Trench County content (same materials as everything above) */
-.bento-more { margin-top: 22px; }
-.video-panel { padding: 10px; }
+.video-panel { padding: 10px; max-width: 1000px; margin: 0 auto; }
+.section-intro .sec-head { margin-bottom: 36px; }
+
+/* the town: one big in-game shot with a list of places beside it (cycles by itself until you pick one) */
+.town-switch { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 14px; padding: 14px; }
+.town-view { position: relative; margin: 0; border-radius: 14px; overflow: hidden; aspect-ratio: 16 / 8.6; background: #0b1220; }
+.town-view img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.45s var(--ease), transform 6s linear; }
+.town-view img.fade { opacity: 0; }
+.town-view figcaption { position: absolute; left: 14px; right: 14px; bottom: 14px; display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 12px; background: rgba(11, 18, 32, 0.74); backdrop-filter: blur(10px); color: #fff; font-size: 14px; }
+.town-view figcaption b { font-family: var(--display); font-size: 16px; white-space: nowrap; }
+.town-view figcaption span:last-child { color: rgba(255, 255, 255, 0.78); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.town-tabs { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.town-tab { position: relative; display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 10px; align-items: center; padding: 6px 10px 6px 6px; border-radius: 12px; border: 2px solid var(--line); background: var(--card); color: var(--fg); text-align: left; font: inherit; cursor: pointer; box-shadow: 0 3px 0 var(--edge); overflow: hidden; transition: transform 0.15s var(--ease), border-color 0.2s, box-shadow 0.2s; }
+.town-tab:hover { transform: translateY(-1px); }
+.town-tab:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--edge); }
+.town-tab img { width: 72px; height: 44px; object-fit: cover; border-radius: 8px; }
+.town-tab b { display: block; font-family: var(--display); font-size: 15px; line-height: 1.2; }
+.town-tab small { display: block; font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.town-tab.on { border-color: var(--primary); box-shadow: 0 3px 0 var(--primary-shade); }
+.town-prog { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--primary); }
+.town-tab.on .town-prog { animation: townProg var(--town-ms, 5000ms) linear forwards; }
+.town-switch.paused .town-tab.on .town-prog, .town-switch.picked .town-prog { animation: none; width: 0; }
+@keyframes townProg { to { width: 100%; } }
+.town-feats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+.town-feats .tile-feat { padding: 16px; }
+.town-feats .tf-art { height: 54px; margin-bottom: 8px; }
+.town-feats .tf-art svg { height: 54px; width: auto; }
+.town-feats .tile-feat h3 { font-size: 17px; }
+.town-feats .tile-feat p { font-size: 13.5px; margin-top: 4px; }
+@media (max-width: 1060px) {
+  .town-switch { grid-template-columns: 1fr; }
+  .town-tabs { flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px; }
+  .town-tab { flex: 0 0 230px; scroll-snap-align: start; }
+  .town-feats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .town-feats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .town-view figcaption span:last-child { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .town-tab.on .town-prog { animation: none; } }
 .video-panel video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 12px; background: #000; }

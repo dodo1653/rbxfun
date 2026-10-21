@@ -628,3 +628,43 @@
   initLeaderboard()
   if (!reduced) initHeroLife()
 })()
+
+
+/* ---------- the town switcher (2026-10-21): cycles every 5 s until you pick a place; pauses on hover ---------- */
+;(function () {
+  const root = document.getElementById('townSwitch')
+  if (!root) return
+  const img = document.getElementById('townImg'), title = document.getElementById('townTitle'), text = document.getElementById('townText')
+  const tabs = Array.from(root.querySelectorAll('.town-tab'))
+  const MS = 5000
+  root.style.setProperty('--town-ms', MS + 'ms')
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
+  // warm the cache so switching never flashes
+  tabs.forEach((t) => { const i = new Image(); i.src = t.dataset.img })
+  let cur = 0, timer = null, picked = false, hovered = false, seen = false
+  function show(i) {
+    cur = (i + tabs.length) % tabs.length
+    const t = tabs[cur]
+    tabs.forEach((b, k) => { b.classList.toggle('on', k === cur); b.setAttribute('aria-selected', String(k === cur)) })
+    // restart the progress bar
+    const p = t.querySelector('.town-prog'); if (p) { p.style.animation = 'none'; void p.offsetWidth; p.style.animation = '' }
+    img.classList.add('fade')
+    setTimeout(() => {
+      img.src = t.dataset.img; img.alt = t.dataset.title + ', in game'
+      title.textContent = t.dataset.title; text.textContent = t.dataset.text
+      img.classList.remove('fade')
+    }, reduced ? 0 : 220)
+    if (window.innerWidth <= 1060) t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'nearest', inline: 'start' })
+  }
+  function schedule() {
+    clearTimeout(timer)
+    if (picked || hovered || reduced || !seen) return
+    timer = setTimeout(() => { show(cur + 1); schedule() }, MS)
+  }
+  tabs.forEach((t, i) => t.addEventListener('click', () => { picked = true; root.classList.add('picked'); clearTimeout(timer); show(i) }))
+  root.addEventListener('mouseenter', () => { hovered = true; root.classList.add('paused'); clearTimeout(timer) })
+  root.addEventListener('mouseleave', () => { hovered = false; root.classList.remove('paused'); schedule() })
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((es) => { seen = es[0].isIntersecting; if (seen) schedule(); else clearTimeout(timer) }, { threshold: 0.35 }).observe(root)
+  } else { seen = true; schedule() }
+})()

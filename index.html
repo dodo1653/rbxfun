@@ -214,6 +214,22 @@
       <div class="ticker-track" id="ticker"></div>
     </div>
 
+    <!-- ======================= INTRO VIDEO ======================= -->
+    <section class="section section-tint section-intro" id="intro">
+      <div class="wrap">
+        <div class="sec-head center" data-reveal>
+          <span class="eyebrow">The intro</span>
+          <h2 class="sec-title">Your story starts at the <span class="hl-gold">counter</span>.</h2>
+          <p class="sec-sub">The intro, exactly as it plays in game. $250, a j*b, a PC, and the rest is up to the chart.</p>
+        </div>
+        <div class="panel video-panel" data-reveal>
+          <video controls preload="none" playsinline poster="/video/intro-poster.webp" width="1280" height="720">
+            <source src="/video/intro.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>
+
     <!-- ======================= HOW IT WORKS ======================= -->
     <section class="section" id="how">
       <div class="wrap">
@@ -278,7 +294,7 @@
       </div>
     </section>
 
-    <!-- ======================= THE CAFE ======================= -->
+    <!-- ======================= THE TOWN ======================= -->
     <section class="section" id="cafe">
       <div class="wrap">
         <div class="sec-head" data-reveal>
@@ -286,84 +302,67 @@
           <h2 class="sec-title">Welcome to <span class="hl-gold">Trench County</span>.</h2>
           <p class="sec-sub">A small, gloomy town built around one brick cafe full of PCs. Trade there, then spend it everywhere else: a car dealership, a jeweller, a tailor, a casino, a garage and houses on the hill.</p>
         </div>
-        <div class="bento">
-          <figure class="tile tile-shot big panel" data-reveal>
-            <img src="/img/shots/cafe-evening.webp" alt="Trench Cafe on Main Street, a 992 Turbo S at the kerb and a player in a suit by the door" loading="lazy" width="1913" height="720" />
-            <figcaption><span class="tag">In-game</span> Trench Cafe. Everyone starts here.</figcaption>
+        <div class="town-switch panel studs-top" id="townSwitch" data-reveal>
+          <figure class="town-view">
+            <img id="townImg" src="/img/shots/cafe-evening.webp" alt="Trench Cafe, in game" width="1913" height="720" />
+            <figcaption><span class="tag">In-game</span><b id="townTitle">Trench Cafe</b><span id="townText">Everyone spawns here. Eight PCs, a barista job and the market on the wall.</span></figcaption>
           </figure>
-          <div class="tile tile-feat panel studs-top" data-reveal style="--d:80ms">
+          <div class="town-tabs" role="tablist" aria-label="Places in Trench County">
+            <button class="town-tab on" type="button" role="tab" aria-selected="true" data-img="/img/shots/cafe-evening.webp" data-title="Trench Cafe" data-text="Everyone spawns here. Eight PCs, a barista job and the market on the wall.">
+              <img src="/img/shots/cafe-evening.webp" alt="" loading="lazy" width="72" height="44" /><span><b>Trench Cafe</b><small>Everyone spawns here</small></span><i class="town-prog"></i>
+            </button>
+            <button class="town-tab" type="button" role="tab" aria-selected="false" data-img="/img/shots/vellano.webp" data-title="VELLANO Motors" data-text="Real cars, real numbers: G82, R34, C7 and a 992 Turbo S.">
+              <img src="/img/shots/vellano.webp" alt="" loading="lazy" width="72" height="44" /><span><b>VELLANO Motors</b><small>Real cars, real numbers</small></span><i class="town-prog"></i>
+            </button>
+            <button class="town-tab" type="button" role="tab" aria-selected="false" data-img="/img/shots/monarch.webp" data-title="MONARCH" data-text="Chandeliers, a red carpet and tables on every side.">
+              <img src="/img/shots/monarch.webp" alt="" loading="lazy" width="72" height="44" /><span><b>MONARCH</b><small>Chandeliers, a red carpet and tables on every side</small></span><i class="town-prog"></i>
+            </button>
+            <button class="town-tab" type="button" role="tab" aria-selected="false" data-img="/img/shots/garage.webp" data-title="Halloran Garage" data-text="Repairs, resprays and a real two-post lift.">
+              <img src="/img/shots/garage.webp" alt="" loading="lazy" width="72" height="44" /><span><b>Halloran Garage</b><small>Repairs, resprays and a real two-post lift</small></span><i class="town-prog"></i>
+            </button>
+            <button class="town-tab" type="button" role="tab" aria-selected="false" data-img="/img/shots/glass-house.webp" data-title="The Glass House" data-text="One of five homes on the hill, pool included.">
+              <img src="/img/shots/glass-house.webp" alt="" loading="lazy" width="72" height="44" /><span><b>The Glass House</b><small>One of five homes on the hill, pool included</small></span><i class="town-prog"></i>
+            </button>
+            <button class="town-tab" type="button" role="tab" aria-selected="false" data-img="/img/shots/north-shore.webp" data-title="The coast road" data-text="Roundabouts, a beach and the highway to West End.">
+              <img src="/img/shots/north-shore.webp" alt="" loading="lazy" width="72" height="44" /><span><b>The coast road</b><small>Roundabouts, a beach and the highway to West End</small></span><i class="town-prog"></i>
+            </button>
+            <button class="town-tab" type="button" role="tab" aria-selected="false" data-img="/img/shots/trenchos-desktop.webp" data-title="TrenchOS" data-text="Every cafe PC boots a desktop: terminal, Posts, Wallet.">
+              <img src="/img/shots/trenchos-desktop.webp" alt="" loading="lazy" width="72" height="44" /><span><b>TrenchOS</b><small>Every cafe PC boots a desktop</small></span><i class="town-prog"></i>
+            </button>
+          </div>
+        </div>
+        <div class="town-feats">
+          <div class="tile tile-feat panel studs-top" data-reveal>
             <div class="tf-art" data-art="feat" data-k="pcs"></div>
             <h3>TrenchOS on every desk</h3>
-            <p>Sit down and the PC boots a desktop: the terminal, Posts, Messages and your Wallet.</p>
+            <p>The terminal, Posts, Messages and your Wallet.</p>
           </div>
-          <div class="tile tile-feat panel studs-top" data-reveal style="--d:120ms">
+          <div class="tile tile-feat panel studs-top" data-reveal style="--d:60ms">
             <div class="tf-art" data-art="feat" data-k="server"></div>
             <h3>Real cars</h3>
-            <p>G82, R34, C7, a 992 Turbo S. Our own physics, a manual gearbox and turbo lag.</p>
+            <p>Our own physics, manual gearbox, turbo lag.</p>
           </div>
-          <div class="tile tile-feat panel studs-top" data-reveal style="--d:100ms">
+          <div class="tile tile-feat panel studs-top" data-reveal style="--d:120ms">
             <div class="tf-art" data-art="feat" data-k="suit"></div>
             <h3>Dress the part</h3>
-            <p>Start as a noob. Leave in a Greys suit with an AUREUM chain and a briefcase full of cash.</p>
+            <p>Greys suits, AUREUM chains, a briefcase of cash.</p>
           </div>
-          <div class="tile tile-feat panel studs-top" data-reveal style="--d:140ms">
+          <div class="tile tile-feat panel studs-top" data-reveal style="--d:180ms">
             <div class="tf-art" data-art="feat" data-k="atm"></div>
             <h3>A house on the hill</h3>
-            <p>Five homes from $15K to $1.5M, with your own PC and your car waiting in the garage.</p>
+            <p>$15K to $1.5M, your car waiting in the garage.</p>
           </div>
-          <figure class="tile tile-shot wide panel" data-reveal style="--d:60ms">
-            <img src="/img/shots/vellano.webp" alt="VELLANO Motors forecourt with a G82, a C7, a 992 Turbo S and an R34" loading="lazy" width="1913" height="720" />
-            <figcaption><span class="tag">In-game</span> VELLANO Motors. Real cars, real numbers.</figcaption>
-          </figure>
-          <div class="tile tile-feat span2 panel studs-top" data-reveal style="--d:100ms">
+          <div class="tile tile-feat panel studs-top" data-reveal style="--d:240ms">
             <div class="tf-art" data-art="feat" data-k="pump"></div>
-            <h3>Built like pump.fun. Played like Roblox.</h3>
-            <p>Bonding curves, fresh launches and graduations — the whole memecoin loop, rebuilt out of bricks and studs so anyone in the server can jump in.</p>
+            <h3>Built like pump.fun</h3>
+            <p>Curves, launches, graduations. Played like Roblox.</p>
           </div>
-        </div>
-        <div class="bento bento-more">
-          <figure class="tile tile-shot wide panel" data-reveal>
-            <img src="/img/shots/monarch.webp" alt="Inside MONARCH casino: sic bo, baccarat and blackjack tables on a red carpet" loading="lazy" width="1913" height="720" />
-            <figcaption><span class="tag">In-game</span> MONARCH. Free chips every day, never bought.</figcaption>
-          </figure>
-          <figure class="tile tile-shot panel" data-reveal style="--d:80ms">
-            <img src="/img/shots/garage.webp" alt="Halloran Garage with a red C7 out front and a two-post lift inside" loading="lazy" width="940" height="720" />
-            <figcaption><span class="tag">In-game</span> Halloran Garage</figcaption>
-          </figure>
-          <figure class="tile tile-shot panel" data-reveal style="--d:140ms">
-            <img src="/img/shots/glass-house.webp" alt="The Glass House with loungers and a pool" loading="lazy" width="1913" height="720" />
-            <figcaption><span class="tag">In-game</span> The Glass House</figcaption>
-          </figure>
-          <figure class="tile tile-shot wide panel" data-reveal>
-            <img src="/img/shots/north-shore.webp" alt="The north shore: a roundabout, the coast road and the sea" loading="lazy" width="1913" height="720" />
-            <figcaption><span class="tag">In-game</span> The coast road to West End</figcaption>
-          </figure>
-          <figure class="tile tile-shot wide panel" data-reveal style="--d:80ms">
-            <img src="/img/shots/trenchos-desktop.webp" alt="The TrenchOS desktop on a cafe PC" loading="lazy" width="1153" height="700" />
-            <figcaption><span class="tag">In-game</span> TrenchOS on a cafe PC</figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================= INTRO VIDEO ======================= -->
-    <section class="section section-tint" id="intro">
-      <div class="wrap">
-        <div class="sec-head center" data-reveal>
-          <span class="eyebrow">The intro</span>
-          <h2 class="sec-title">Your story starts at the <span class="hl-gold">counter</span>.</h2>
-          <p class="sec-sub">The intro, exactly as it plays in game. $250, a j*b, a PC, and the rest is up to the chart.</p>
-        </div>
-        <div class="panel video-panel" data-reveal>
-          <video controls preload="none" playsinline poster="/video/intro-poster.webp" width="1280" height="720">
-            <source src="/video/intro.mp4" type="video/mp4" />
-          </video>
         </div>
       </div>
     </section>
 
     <!-- ======================= LEADERBOARD ======================= -->
-    <section class="section" id="leaderboard">
+    <section class="section section-tint" id="leaderboard">
       <div class="wrap">
         <div class="sec-head center" data-reveal>
           <span class="eyebrow">Leaderboard</span>
@@ -377,7 +376,7 @@
     </section>
 
     <!-- ======================= FAQ ======================= -->
-    <section class="section section-tint" id="faq">
+    <section class="section" id="faq">
       <div class="wrap faq-wrap">
         <div class="sec-head" data-reveal>
           <span class="eyebrow">FAQ</span>

@@ -7,7 +7,10 @@ Play: https://www.roblox.com/games/121901103139963/RBXfun · Live: https://rbxfu
 > trading platform). The design below is unchanged and is the site's look: only the copy, brand wordmark, cafe sign art
 > ("Trench / CAFE · TRENCH COUNTY", "OPEN 24/7"), Roblox links and images changed. New: in-game shots in `img/shots/`
 > (Studio captures with ThumbStage golden lighting), the intro video section (`video/intro.mp4`, `#intro`), a second
-> town gallery row (`.bento-more`), FAQ on ROL / Robux / the token, car-model credits in the footer, `img/og.jpg`.
+> town section, FAQ on ROL / Robux / the token, car-model credits in the footer, `img/og.jpg`. Later the same day (user: too much
+> scrolling): the intro video sits right under the hero (`#intro`, after the ticker), and the town is one compact place
+> switcher (`#townSwitch`: a big shot + 7 place tabs, cycles every 5 s until clicked, pauses on hover; horizontal tabs
+> on mobile) with the five feature tiles in one slim row (`.town-feats`).
 > A full redesign was tried the same day and rejected by the user: keep this style.
 
 This README is both the project docs **and** a complete design spec. Hand it to any developer or AI agent and they should be able to rebuild (or extend) the site with the same look, materials and motion — no screenshots needed.
