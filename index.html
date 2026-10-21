@@ -1,419 +1,445 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>RBXfun — The memecoin trading game on Roblox</title>
-  <meta name="description" content="RBXfun is the first memecoin-trading experience on Roblox. Walk into the Executive Internet Cafe, launch a coin in seconds and ride the chart with your whole server." />
-  <meta name="theme-color" content="#eef2f8" />
-  <meta property="og:title" content="RBXfun — The memecoin trading game on Roblox" />
-  <meta property="og:description" content="Launch it. Pump it. Cash it. The first memecoin-trading experience on Roblox." />
+  <title>Trench County</title>
+  <meta name="description" content="Trench County is a Roblox open-world game where everyone trades memecoins. Start with $250, get a job, sit at a PC, catch the next runner, and spend it on cars, houses and a night at the casino." />
+  <meta name="theme-color" content="#0c0d10" />
+  <meta property="og:title" content="Trench County: trade memes, live life" />
+  <meta property="og:description" content="The memecoin trenches, as a Roblox town. Free to play." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/img/og.png" />
+  <meta property="og:image" content="https://rbxfun.vercel.app/img/og.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="/img/og.png" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="twitter:image" content="https://rbxfun.vercel.app/img/og.jpg" />
+  <link rel="icon" href="/img/icon-64.png" type="image/png" />
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Rye&display=swap" />
   <link rel="stylesheet" href="/css/style.css" />
-  <script>
-    (function () {
-      var d = document.documentElement, t = null
-      try { t = localStorage.getItem('rbxfun:theme') } catch (e) {}
-      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-      d.dataset.theme = t
-      try { if (sessionStorage.getItem('rbxfun:intro')) d.dataset.intro = 'off'; else sessionStorage.setItem('rbxfun:intro', '1') } catch (e) {}
-      var anim = matchMedia('(min-width: 900px) and (min-height: 600px)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches
-      d.dataset.scene = anim ? 'anim' : 'static'
-    })()
-  </script>
 </head>
 <body>
-  <!-- intro loader -->
-  <div class="intro" aria-hidden="true">
-    <div class="studs intro-studs"></div>
-    <div class="intro-inner">
-      <span class="intro-logo" data-art="logo" data-size="88"></span>
-      <span class="intro-word">RBX<span>fun</span></span>
-      <span class="intro-bar"><span></span></span>
-    </div>
-  </div>
+  <a class="skip" href="#main">Skip to content</a>
 
   <header class="site-header" id="header">
     <div class="wrap header-row">
-      <a href="#top" class="brand" aria-label="RBXfun home"><span data-art="logo" data-size="34"></span><span class="brand-word">RBX<span>fun</span></span></a>
+      <a href="#top" class="brand" aria-label="Trench County home">
+        <img src="/img/shots/icon.webp" alt="" width="30" height="30" />
+        <span>Trench County</span>
+      </a>
       <nav class="nav" aria-label="Main">
-        <a href="#how">How it works</a>
-        <a href="#terminal">Terminal</a>
-        <a href="#pulse">Pulse</a>
-        <a href="#cafe">The Cafe</a>
-        <a href="#leaderboard">Leaderboard</a>
+        <a href="#story">The story</a>
+        <a href="#trenchos">TrenchOS</a>
+        <a href="#town">The town</a>
+        <a href="#ledger">The ledger</a>
+        <a href="#coin">The coin</a>
         <a href="#faq">FAQ</a>
       </nav>
       <div class="header-actions">
-        <span class="live-pill" title="Contract address coming soon"><i></i> CA soon</span>
-        <a class="btn btn-primary btn-sm" href="https://www.roblox.com/games/121901103139963/RBXfun" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M5.2 2 2 17.2 18.8 22 22 6.8Zm8.9 13-4.6-1 1-4.6 4.6 1Z"/></svg>
-          Play free
-        </a>
-        <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle dark mode">
-          <svg class="i-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-          <svg class="i-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        </button>
-        <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <span class="ca-pill" title="The contract address is posted here first"><i></i>CA soon</span>
+        <a class="btn btn-light btn-sm" href="https://www.roblox.com/games/121901103139963" target="_blank" rel="noopener">Play</a>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
       </div>
     </div>
-    <div class="mobile-nav" id="mobileNav">
-      <a href="#how">How it works</a><a href="#terminal">Terminal</a><a href="#pulse">Pulse</a><a href="#cafe">The Cafe</a><a href="#leaderboard">Leaderboard</a><a href="#faq">FAQ</a>
-    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+      <a href="#story">The story</a><a href="#trenchos">TrenchOS</a><a href="#town">The town</a><a href="#ledger">The ledger</a><a href="#coin">The coin</a><a href="#faq">FAQ</a>
+    </nav>
   </header>
 
-  <main>
-    <!-- ======================= HERO → MONITOR SCENE ======================= -->
-    <section class="scene" id="top">
-      <div class="scene-sticky">
-        <div class="scene-stage" data-stage>
-          <div class="scene-card">
-            <div class="world-sky">
-              <div class="stars"></div>
-              <div class="sun"></div>
-              <div class="moon"></div>
-              <div class="skyline-wrap" data-art="skyline"></div>
-              <span class="cloud c1" data-art="cloud" data-v="0"></span>
-              <span class="cloud c2" data-art="cloud" data-v="1"></span>
-              <span class="cloud c3" data-art="cloud" data-v="2"></span>
-              <span class="cloud c4" data-art="cloud" data-v="0"></span>
-            </div>
-            <div class="world-ground"><div class="world-plate"></div></div>
-            <div class="world-haze"></div>
-
-            <div class="hero-props">
-              <div class="prop-lamp l1" data-art="lamp"></div>
-              <div class="prop-cafe" data-art="cafe"></div>
-              <div class="prop-atm" data-art="atm"></div>
-              <div class="prop-plant p1" data-art="plant"></div>
-              <div class="prop-plant p2" data-art="plant"></div>
-              <div class="prop-av av1">
-                <div class="chat" id="chat1">gm traders</div>
-                <span data-art="avatar" data-preset="exec"></span>
-              </div>
-              <div class="prop-av av2">
-                <div class="chat" id="chat2">$NOOB 🚀</div>
-                <span data-art="avatar" data-preset="waver"></span>
-              </div>
-              <div class="prop-av av3"><span data-art="avatar" data-preset="phone"></span></div>
-              <div class="trade-pop" id="tradePop"></div>
-            </div>
-
-            <div class="hero-copy">
-              <a class="eyebrow-pill" href="https://www.roblox.com/games/121901103139963/RBXfun" target="_blank" rel="noopener">
-                <span class="dot"></span> Now open in BETA on Roblox <span class="arrow">→</span>
-              </a>
-              <h1 class="hero-title">
-                <span class="ln"><span>Launch it.</span></span>
-                <span class="ln"><span>Pump it.</span></span>
-                <span class="ln"><span class="hl">Cash it.</span></span>
-              </h1>
-              <p class="hero-sub">RBXfun is the first memecoin-trading experience on Roblox. Suit up, grab a PC at the Executive Internet Cafe, launch a coin in seconds and ride the chart with your whole server.</p>
-              <div class="hero-ctas">
-                <a class="btn btn-primary btn-lg" href="https://www.roblox.com/games/121901103139963/RBXfun" target="_blank" rel="noopener">
-                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M5.2 2 2 17.2 18.8 22 22 6.8Zm8.9 13-4.6-1 1-4.6 4.6 1Z"/></svg>
-                  Play on Roblox
-                </a>
-                <a class="btn btn-ghost btn-lg" href="#terminal">Try the terminal <span aria-hidden="true">↓</span></a>
-              </div>
-              <ul class="hero-facts">
-                <li><b>Free</b> to play</li>
-                <li><b>13</b> traders per server</li>
-                <li><b>BETA</b> live now</li>
-              </ul>
-            </div>
-
-            <div class="coins" aria-hidden="true">
-              <span class="scene-coin" style="--x:8%;--y:72%;--s:58px" data-fx="-30" data-fy="40" data-face="smile"></span>
-              <span class="scene-coin" style="--x:44%;--y:16%;--s:46px" data-fx="10" data-fy="-60" data-face="dollar"></span>
-              <span class="scene-coin" style="--x:45%;--y:80%;--s:66px" data-fx="-20" data-fy="60" data-face="shades"></span>
-              <span class="scene-coin" style="--x:90%;--y:20%;--s:52px" data-fx="40" data-fy="-30" data-face="smile"></span>
-              <span class="scene-coin" style="--x:70%;--y:12%;--s:38px" data-fx="20" data-fy="-70" data-face="dollar" data-tone="green"></span>
-              <span class="scene-bill" style="--x:57%;--y:20%" data-r="-14"></span>
-              <span class="scene-bill" style="--x:33%;--y:84%" data-r="10"></span>
-            </div>
-
-            <a href="#terminal" class="scroll-hint" aria-label="Scroll down"><span></span></a>
-          </div>
-
-          <!-- "after" copy and the cafe PC monitor the hero collapses into -->
-          <div class="scene-after">
-            <span class="eyebrow">The terminal</span>
-            <h2 class="after-title">Sit down. <span>Pull up a chart.</span></h2>
-            <p>Every PC in the cafe runs the RBXfun terminal. Here's a playable one — buy, sell and watch the curve move.</p>
-          </div>
-
-          <div class="monitor" id="terminal">
-            <div class="bezel"><span class="bezel-logo"><span data-art="logo" data-size="16"></span>RBXfun</span><span class="bezel-led"></span></div>
-            <div class="stand"><span></span><i></i></div>
-            <div class="monitor-screen">
-              <div class="term" id="term">
-                <div class="term-top">
-                  <div class="term-brand"><span class="t-dot"></span><b>RBXfun</b><span class="t-sep">/</span><span>Terminal</span></div>
-                  <div class="term-tabs" id="termTabs"></div>
-                  <div class="term-wallet"><span class="t-dot"></span><span id="tWallet">1,000.00</span><small>CASH</small></div>
-                </div>
-                <div class="term-body">
-                  <div class="term-chart">
-                    <div class="tc-head">
-                      <span class="tc-icon" id="tcIcon"></span>
-                      <div class="tc-name"><b id="tcTicker">$NOOB</b><small id="tcName">Noob Coin</small></div>
-                      <div class="tc-stat"><small>Price</small><b id="tcPrice">0.0000</b></div>
-                      <div class="tc-stat"><small>Market cap</small><b id="tcMcap">$0</b></div>
-                      <div class="tc-stat"><small>24h</small><b id="tcChange" class="up">+0%</b></div>
-                      <div class="tc-tf"><button class="on">1s</button><button>1m</button><button>5m</button></div>
-                    </div>
-                    <div class="tc-canvas" id="chart">
-                      <svg id="chartSvg" preserveAspectRatio="none"></svg>
-                      <div class="tc-last" id="tcLast"></div>
-                      <div class="tc-float" id="tcFloat"></div>
-                    </div>
-                    <div class="tc-curve">
-                      <span>Bonding curve</span>
-                      <div class="bar"><i id="curveBar"></i></div>
-                      <b id="curvePct">0%</b>
-                      <span class="grad-note" id="gradNote">Graduates at 100%</span>
-                    </div>
-                  </div>
-                  <aside class="term-side">
-                    <div class="ts-tabs" role="tablist">
-                      <button class="on buy" data-side="buy" role="tab">Buy</button>
-                      <button class="sell" data-side="sell" role="tab">Sell</button>
-                    </div>
-                    <label class="ts-amount"><span>Amount</span><input id="tAmount" type="text" inputmode="decimal" value="50" aria-label="Trade amount" /><small>CASH</small></label>
-                    <div class="ts-chips" id="tChips"><button>10</button><button class="on">50</button><button>100</button><button>250</button></div>
-                    <button class="ts-go buy" id="tGo">Buy $NOOB</button>
-                    <div class="ts-pos">
-                      <div><small>Holding</small><b id="pHold">0</b></div>
-                      <div><small>Value</small><b id="pVal">0.00</b></div>
-                      <div><small>PnL</small><b id="pPnl">0.00</b></div>
-                    </div>
-                    <div class="ts-feed-h">Live trades</div>
-                    <ul class="ts-feed" id="tFeed"></ul>
-                  </aside>
-                </div>
-              </div>
-            </div>
-          </div>
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="hero-media" aria-hidden="true">
+        <img src="/img/shots/vellano.webp" alt="" width="1913" height="720" fetchpriority="high" />
+      </div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <p class="eyebrow">A Roblox open-world game &middot; free to play</p>
+        <h1 class="title">Trench County</h1>
+        <p class="motto">Trade memes &middot; Live life</p>
+        <p class="hero-sub">A small, gloomy town where everyone trades memecoins. Show up with $250, pull shots at the cafe, sit at a PC and catch the next runner. Then spend it: a 992 Turbo S, a glass house with a pool, a night at MONARCH.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-light btn-lg" href="https://www.roblox.com/games/121901103139963" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M5.2 2 2 17.2 18.8 22 22 6.8Zm8.9 13-4.6-1 1-4.6 4.6 1Z"/></svg>
+            Play on Roblox
+          </a>
+          <a class="btn btn-ghost btn-lg" href="#intro" data-play-intro>
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M7 4.5v15l12-7.5Z"/></svg>
+            Watch the intro
+          </a>
         </div>
+        <ul class="hero-facts">
+          <li><b id="heroRol">$110</b><span>ROL today, follows SOL</span></li>
+          <li><b>1 click</b><span>to launch your own coin</span></li>
+          <li><b>0</b><span>wallets to connect</span></li>
+        </ul>
       </div>
     </section>
 
-    <!-- ======================= TICKER ======================= -->
-    <div class="ticker" aria-label="Trending coins">
+    <!-- ============ TICKER ============ -->
+    <div class="ticker" aria-label="Coins trading in town">
       <div class="ticker-track" id="ticker"></div>
     </div>
 
-    <!-- ======================= HOW IT WORKS ======================= -->
-    <section class="section" id="how">
+    <!-- ============ STORY ============ -->
+    <section class="section" id="story">
       <div class="wrap">
-        <div class="sec-head" data-reveal>
-          <span class="eyebrow">How it works</span>
-          <h2 class="sec-title">From noob to <span class="hl-gold">executive</span><br />in four steps.</h2>
-          <p class="sec-sub">No wallets, no setup. Everything happens inside the game — you just need a Roblox account and a little nerve.</p>
+        <header class="sec-head" data-reveal>
+          <p class="eyebrow">The story</p>
+          <h2 class="sec-title">Your story starts at the counter.</h2>
+        </header>
+
+        <div class="chapters">
+          <article class="chapter" data-reveal>
+            <figure><img src="/img/shots/cafe-evening.webp" alt="Trench Cafe on Main Street, a yellow 992 Turbo S at the kerb" loading="lazy" width="1913" height="720" /></figure>
+            <div class="chapter-copy">
+              <span class="ch-n">I</span>
+              <h3>You just got here with $250.</h3>
+              <p class="quiet">Not even gas money.</p>
+              <p>Everyone spawns at Trench Cafe: brick, green paint, a radio on the back counter, eight PCs by the window. Nobody here was born rich.</p>
+            </div>
+          </article>
+          <article class="chapter flip" data-reveal>
+            <figure><img src="/img/shots/story-barista.webp" alt="A chalkboard inside the cafe: Barista wanted, $25 an order" loading="lazy" width="1600" height="667" /></figure>
+            <div class="chapter-copy">
+              <span class="ch-n">II</span>
+              <h3>So first, you get a j*b.</h3>
+              <p class="quiet">$25 a go. Nobody's proud of it.</p>
+              <p>Clock in behind the counter: grind, pull the shot, steam the milk, carry it to table two. Or take the green council cart and sweep Main Street, $25 a bag.</p>
+            </div>
+          </article>
+          <article class="chapter" data-reveal>
+            <figure><img src="/img/shots/story-pc.webp" alt="A cafe PC showing the Pulse board of live coins" loading="lazy" width="1600" height="667" /></figure>
+            <div class="chapter-copy">
+              <span class="ch-n">III</span>
+              <h3>Swap your $ for ROL. Sit at any PC.</h3>
+              <p class="quiet">Every coin on Pulse, the second it launches.</p>
+              <p>ROL is the town's Solana. Its price follows the real SOL price, so the market outside moves the market in here. Swap on your phone, then take a seat.</p>
+            </div>
+          </article>
+          <article class="chapter flip" data-reveal>
+            <figure><img src="/img/shots/story-wall.webp" alt="The cafe's market screen, a green chart running up" loading="lazy" width="1600" height="667" /></figure>
+            <div class="chapter-copy">
+              <span class="ch-n">IV</span>
+              <h3>Buy early. Sell higher.</h3>
+              <p class="quiet">Or launch your own and take a cut of every trade.</p>
+              <p>Coins run on a pump.fun bonding curve and graduate at 85 ROL. Launch one in a click, link your post, bullpost it in Trench Chat, and earn 0.5% of every buy and sell anyone makes.</p>
+            </div>
+          </article>
+          <article class="chapter" data-reveal>
+            <figure><img src="/img/shots/story-911.webp" alt="A cream 992 Turbo S on the VELLANO forecourt, red calipers" loading="lazy" width="1600" height="667" /></figure>
+            <div class="chapter-copy">
+              <span class="ch-n">V</span>
+              <h3>Print enough, and life changes.</h3>
+              <p class="quiet">And once you've made it, have fun with your money.</p>
+              <p>Real cars from VELLANO, a house on the hill with your car in its garage, chains from AUREUM, a seat at the tables in MONARCH.</p>
+            </div>
+          </article>
         </div>
-        <div class="steps">
-          <article class="step panel studs-top" data-reveal>
-            <div class="step-art" data-art="step" data-step="1"></div>
-            <span class="step-n">1</span>
-            <h3>Walk into the cafe</h3>
-            <p>Spawn on the street, push through the doors of the Executive Internet Cafe and claim a free PC.</p>
-          </article>
-          <article class="step panel studs-top" data-reveal style="--d:80ms">
-            <div class="step-art" data-art="step" data-step="2"></div>
-            <span class="step-n">2</span>
-            <h3>Launch a coin</h3>
-            <p>Pick a name, a ticker and a face. Your coin goes live for the whole server in one click.</p>
-          </article>
-          <article class="step panel studs-top" data-reveal style="--d:160ms">
-            <div class="step-art" data-art="step" data-step="3"></div>
-            <span class="step-n">3</span>
-            <h3>Ride the chart</h3>
-            <p>Every buy pushes the price up the bonding curve, every sell drags it down. Read the room, time your exit.</p>
-          </article>
-          <article class="step panel studs-top" data-reveal style="--d:240ms">
-            <div class="step-art" data-art="step" data-step="4"></div>
-            <span class="step-n">4</span>
-            <h3>Graduate &amp; flex</h3>
-            <p>Fill the curve and your coin graduates. Stack cash, buy the suit, climb the leaderboard.</p>
-          </article>
+
+        <div class="intro" id="intro" data-reveal>
+          <div class="intro-frame">
+            <video id="introVideo" controls preload="none" playsinline poster="/video/intro-poster.webp" width="1280" height="720">
+              <source src="/video/intro.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p class="intro-cap">The intro, as it plays in game. Music is ours, made for Trench County.</p>
         </div>
       </div>
     </section>
 
-    <!-- ======================= PULSE ======================= -->
-    <section class="section section-tint" id="pulse">
+    <!-- ============ TRENCHOS ============ -->
+    <section class="section section-dark" id="trenchos">
       <div class="wrap">
-        <div class="sec-head split" data-reveal>
+        <header class="sec-head split" data-reveal>
           <div>
-            <span class="eyebrow">Pulse</span>
-            <h2 class="sec-title">The whole server's coins,<br />live on one board.</h2>
+            <p class="eyebrow">TrenchOS</p>
+            <h2 class="sec-title">Every cafe PC is a desktop.</h2>
           </div>
-          <p class="sec-sub">Fresh launches drop in at the top. Coins climbing the curve move to the final stretch. The ones that make it graduate.</p>
+          <p class="sec-sub">Sit down and the monitor boots into TrenchOS: the TC Terminal, Posts, Messages, Wallet and a README for the new kid. Here's a playable terminal with play money. In game the coins are other players'.</p>
+        </header>
+
+        <div class="monitor" data-reveal>
+          <div class="screen">
+            <div class="os-bar">
+              <span class="os-name">TrenchOS</span>
+              <span class="os-app">TC Terminal</span>
+              <span class="os-time" id="osTime"></span>
+            </div>
+            <div class="term" id="term">
+              <aside class="t-list" aria-label="Fresh launches">
+                <div class="t-list-h"><i></i>Fresh launches</div>
+                <ul id="tCoins"></ul>
+              </aside>
+              <div class="t-main">
+                <div class="t-head">
+                  <span class="t-icon" id="tIcon"></span>
+                  <div class="t-name"><b id="tTicker">$NOOB</b><small id="tFull">Noob Coin</small></div>
+                  <div class="t-stat"><small>Market cap</small><b id="tMc">$0</b></div>
+                  <div class="t-stat"><small>Change</small><b id="tChg" class="up">+0%</b></div>
+                  <div class="t-stat hide-sm"><small>Holders</small><b id="tHold">0</b></div>
+                </div>
+                <div class="t-chart"><canvas id="tChart" aria-label="Price chart"></canvas></div>
+                <div class="t-curve"><span>Bonding curve</span><div class="bar"><i id="tCurve"></i></div><b id="tCurvePct">0%</b></div>
+              </div>
+              <aside class="t-side">
+                <div class="seg" role="tablist">
+                  <button class="on" data-side="buy" role="tab" aria-selected="true">Buy</button>
+                  <button data-side="sell" role="tab" aria-selected="false">Sell</button>
+                </div>
+                <label class="amt"><span>Amount</span><input id="tAmt" type="text" inputmode="decimal" value="0.5" aria-label="Amount in ROL" /><em>ROL</em></label>
+                <div class="chips" id="tChips"><button>0.1</button><button class="on">0.5</button><button>1</button><button>Max</button></div>
+                <button class="go buy" id="tGo">Buy $NOOB</button>
+                <dl class="pos">
+                  <div><dt>Wallet</dt><dd id="tWallet">10.00 ROL</dd></div>
+                  <div><dt>Holding</dt><dd id="tPos">0</dd></div>
+                  <div><dt>P&amp;L</dt><dd id="tPnl">0.00</dd></div>
+                </dl>
+                <div class="feed-h">Trades</div>
+                <ul class="feed" id="tFeed"></ul>
+              </aside>
+            </div>
+          </div>
+          <div class="chin"><span>TRENCH</span><i></i></div>
         </div>
-        <div class="pulse" data-reveal>
-          <div class="pulse-col">
-            <div class="pc-head"><i class="bar-blue"></i><div><b>Fresh launches</b><small>Just went live</small></div><span class="count" id="cNew">0</span></div>
-            <ul id="colNew"></ul>
-          </div>
-          <div class="pulse-col">
-            <div class="pc-head"><i class="bar-gold"></i><div><b>Final stretch</b><small>Over 60% bonded</small></div><span class="count" id="cMid">0</span></div>
-            <ul id="colMid"></ul>
-          </div>
-          <div class="pulse-col">
-            <div class="pc-head"><i class="bar-green"></i><div><b>Graduated</b><small>Curve complete</small></div><span class="count" id="cGrad">0</span></div>
-            <ul id="colGrad"></ul>
-          </div>
+
+        <div class="os-apps" data-reveal>
+          <div><b>TC Terminal</b><p>Pulse in three columns: fresh launches, final stretch, graduated. 1-second candles, one-click buys, positions with P&amp;L.</p></div>
+          <div><b>Posts</b><p>The town's own X. Bullpost your coin, then link the post to your launch so it shows on every Pulse row.</p></div>
+          <div><b>Wallet</b><p>Swap $ and ROL at the live rate. Top up with Robux: 5 ROL for 150 R$.</p></div>
+          <div><b>Trench Chat</b><p>One public chat for every server, docked beside the terminal. Shill responsibly.</p></div>
+        </div>
+
+        <div class="shots-2" data-reveal>
+          <figure><img src="/img/shots/trenchos-desktop.webp" alt="The TrenchOS desktop in game: app tiles, clock, wallet and top movers" loading="lazy" width="1153" height="700" /><figcaption>The desktop, in game</figcaption></figure>
+          <figure><img src="/img/shots/trenchos-terminal.webp" alt="The TC Terminal in game: a coin's chart with buy and sell panel" loading="lazy" width="1073" height="700" /><figcaption>A coin page, in game</figcaption></figure>
         </div>
       </div>
     </section>
 
-    <!-- ======================= THE CAFE ======================= -->
-    <section class="section" id="cafe">
+    <!-- ============ TOWN ============ -->
+    <section class="section" id="town">
       <div class="wrap">
-        <div class="sec-head" data-reveal>
-          <span class="eyebrow">The Cafe</span>
-          <h2 class="sec-title">Welcome to the <span class="hl-gold">trench</span>.</h2>
-          <p class="sec-sub">A neon-lit internet cafe in the middle of the city, open 24/7. Rows of PCs, an ATM by the door and a server full of people trying to out-trade you.</p>
-        </div>
-        <div class="bento">
-          <figure class="tile tile-shot big panel" data-reveal>
-            <img src="/img/cafe-front.png" alt="An RBXfun player in a suit with a briefcase of cash outside the Executive Internet Cafe" loading="lazy" width="768" height="431" />
-            <figcaption><span class="tag">In-game</span> The front door. Suit optional, briefcase recommended.</figcaption>
-          </figure>
-          <div class="tile tile-feat panel studs-top" data-reveal style="--d:80ms">
-            <div class="tf-art" data-art="feat" data-k="pcs"></div>
-            <h3>A PC for everyone</h3>
-            <p>Every desk runs the live terminal. Sit down and you're trading.</p>
+        <header class="sec-head split" data-reveal>
+          <div>
+            <p class="eyebrow">The town</p>
+            <h2 class="sec-title">Small town. Every door opens.</h2>
           </div>
-          <div class="tile tile-feat panel studs-top" data-reveal style="--d:120ms">
-            <div class="tf-art" data-art="feat" data-k="server"></div>
-            <h3>13-player servers</h3>
-            <p>Small rooms, real rivals. Everyone sees every launch, buy and dump.</p>
+          <p class="sec-sub">No filler buildings. Pick a place on the map.</p>
+        </header>
+        <div class="town" data-reveal>
+          <div class="map" id="map">
+            <img src="/img/shots/town-map.webp" alt="Map of Trench County: the old town, the new town on Market Row, the houses on the hill and the north shore" width="1560" height="1350" loading="lazy" />
+            <div class="pins" id="pins"></div>
           </div>
-          <div class="tile tile-feat panel studs-top" data-reveal style="--d:100ms">
-            <div class="tf-art" data-art="feat" data-k="suit"></div>
-            <h3>Dress the part</h3>
-            <p>Start as a noob. Leave in a three-piece suit with a briefcase full of cash.</p>
-          </div>
-          <div class="tile tile-feat panel studs-top" data-reveal style="--d:140ms">
-            <div class="tf-art" data-art="feat" data-k="atm"></div>
-            <h3>Stack your cash</h3>
-            <p>Your bag follows you around the city. Spend it, flex it, or send it back into the trench.</p>
-          </div>
-          <figure class="tile tile-shot wide panel" data-reveal style="--d:60ms">
-            <img src="/img/cafe-inside.png" alt="Inside the cafe: rows of glowing RBXfun PCs facing a neon city skyline" loading="lazy" width="768" height="431" />
-            <figcaption><span class="tag">In-game</span> Rows of RGB rigs, one city view.</figcaption>
-          </figure>
-          <div class="tile tile-feat span2 panel studs-top" data-reveal style="--d:100ms">
-            <div class="tf-art" data-art="feat" data-k="pump"></div>
-            <h3>Built like pump.fun. Played like Roblox.</h3>
-            <p>Bonding curves, fresh launches and graduations — the whole memecoin loop, rebuilt out of bricks and studs so anyone in the server can jump in.</p>
-          </div>
+          <article class="place" id="place" aria-live="polite">
+            <figure class="place-img"><img id="placeImg" src="/img/shots/cafe-evening.webp" alt="" loading="lazy" /></figure>
+            <div class="place-body">
+              <p class="place-kicker" id="placeKicker">Main Street</p>
+              <h3 id="placeName">Trench Cafe</h3>
+              <p id="placeText"></p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ======================= LEADERBOARD ======================= -->
-    <section class="section section-tint" id="leaderboard">
+    <!-- ============ LEDGER ============ -->
+    <section class="section section-paper" id="ledger">
       <div class="wrap">
-        <div class="sec-head center" data-reveal>
-          <span class="eyebrow">Leaderboard</span>
-          <h2 class="sec-title">Top of the trench.</h2>
-          <p class="sec-sub">The biggest bags in the cafe this week. Your name could be on a gold brick.</p>
+        <div class="ledger" data-reveal>
+          <header class="ledger-head">
+            <p class="ledger-kicker">Trench County</p>
+            <h2>The Ledger</h2>
+            <p class="ledger-sub">What things cost in town, in dollars. Prices as of October 2026.</p>
+          </header>
+          <div class="ledger-cols">
+            <section>
+              <h3>VELLANO Motors</h3>
+              <ul class="ll">
+                <li><span>Goteborg 240 GL</span><i></i><b>5,000</b></li>
+                <li><span>Goteborg 240 Turbo</span><i></i><b>8,000</b></li>
+                <li><span>Strada GT</span><i></i><b>30,000</b></li>
+                <li><span>Kanagawa R34 V-Spec II</span><i></i><b>50,000</b></li>
+                <li><span>Bavaria G82 Competition</span><i></i><b>65,000</b></li>
+                <li><span>Bowling Green C7 Stingray</span><i></i><b>85,000</b></li>
+                <li><span>Zuffen 992 Turbo S</span><i></i><b>250,000</b></li>
+              </ul>
+              <p class="ll-note">Real chassis, real numbers: our own physics, gearbox, turbo lag and tyres.</p>
+            </section>
+            <section>
+              <h3>Houses on the Hill</h3>
+              <ul class="ll">
+                <li><span>Crescent Cottage</span><i></i><b>15,000</b></li>
+                <li><span>Brick Townhouse</span><i></i><b>40,000</b></li>
+                <li><span>Hillside Modern</span><i></i><b>120,000</b></li>
+                <li><span>Glass House</span><i></i><b>350,000</b></li>
+                <li><span>Summit Estate</span><i></i><b>1,500,000</b></li>
+              </ul>
+              <p class="ll-note">Furnished. Your own PC and espresso machine. Your car waits in the garage.</p>
+            </section>
+            <section>
+              <h3>AUREUM</h3>
+              <ul class="ll">
+                <li><span>Leather Briefcase</span><i></i><b>8,000</b></li>
+                <li><span>Rope Chain</span><i></i><b>12,000</b></li>
+                <li><span>Aluminium Case</span><i></i><b>18,000</b></li>
+                <li><span>Cuban Link</span><i></i><b>25,000</b></li>
+                <li><span>Black Vault Case</span><i></i><b>40,000</b></li>
+                <li><span>Iced Tennis Chain</span><i></i><b>75,000</b></li>
+                <li><span>Gold Coin Pendant</span><i></i><b>150,000</b></li>
+              </ul>
+            </section>
+            <section>
+              <h3>Liberty Arms</h3>
+              <ul class="ll">
+                <li><span>Bandage</span><i></i><b>120</b></li>
+                <li><span>Med Kit</span><i></i><b>650</b></li>
+                <li><span>Glock 17</span><i></i><b>1,500</b></li>
+                <li><span>MP5</span><i></i><b>9,000</b></li>
+                <li><span>AKM</span><i></i><b>18,000</b></li>
+                <li><span>M4A1</span><i></i><b>24,000</b></li>
+                <li><span>M60</span><i></i><b>60,000</b></li>
+              </ul>
+              <p class="ll-note">Die with cash in your pocket and 70% of it stays where you fell.</p>
+            </section>
+          </div>
+          <p class="stamp" aria-hidden="true">Paid in full</p>
         </div>
-        <div class="podium" id="podium" data-reveal></div>
-        <div class="lb panel" id="lbList" data-reveal></div>
-        <p class="fineprint center">Example board — names and numbers are for illustration.</p>
       </div>
     </section>
 
-    <!-- ======================= FAQ ======================= -->
+    <!-- ============ LIFE ============ -->
+    <section class="section" id="life">
+      <div class="wrap">
+        <header class="sec-head" data-reveal>
+          <p class="eyebrow">Life in the county</p>
+          <h2 class="sec-title">The money's the point. The town's the reason to stay.</h2>
+        </header>
+        <div class="cards">
+          <article class="card" data-reveal>
+            <img src="/img/shots/monarch.webp" alt="Inside MONARCH: sic bo, baccarat and blackjack tables on a red carpet" loading="lazy" width="1913" height="720" />
+            <div><h3>MONARCH casino</h3><p>Baccarat, sic bo, blackjack, slots and a crash screen on the wall. Played with free daily chips, never bought, never cashed out.</p></div>
+          </article>
+          <article class="card" data-reveal>
+            <img src="/img/shots/garage.webp" alt="Halloran Garage with a red C7 out front and a two-post lift inside" loading="lazy" width="940" height="720" />
+            <div><h3>Halloran Garage</h3><p>Drive in and the car goes up on the lift. Bullet holes, shot-out glass, blown tyres, a fresh respray.</p></div>
+          </article>
+          <article class="card" data-reveal>
+            <img src="/img/shots/meridian.webp" alt="MERIDIAN filling station at night with an R34 at a pump" loading="lazy" width="1913" height="720" />
+            <div><h3>MERIDIAN</h3><p>Take the nozzle, find your filler flap, Z to fill up. Shoot a pump and give it a minute to go up.</p></div>
+          </article>
+          <article class="card" data-reveal>
+            <img src="/img/shots/glass-house.webp" alt="The Glass House: floor-to-ceiling glass, loungers and a pool" loading="lazy" width="1913" height="720" />
+            <div><h3>A house of your own</h3><p>Owner-only doors, a light switch on L, a fire to light, a bed, and a PC so the trading never stops.</p></div>
+          </article>
+          <article class="card" data-reveal>
+            <img src="/img/shots/north-shore.webp" alt="The north shore: a roundabout, the coast road and the sea" loading="lazy" width="1913" height="720" />
+            <div><h3>Roads to drive</h3><p>A coast road, three roundabouts, a highway to West End and a seafront. Manual gearbox, clutch, handbrake.</p></div>
+          </article>
+          <article class="card card-text" data-reveal>
+            <div>
+              <h3>The phone</h3>
+              <p>Messages with real headshots, Posts, the TC Terminal in your pocket, a wallet with a swap sheet. B to take it out.</p>
+              <h3>Breakable everything</h3>
+              <p>Windows crack then shatter, cars smoke, burn and blow, and every crash costs you.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COIN ============ -->
+    <section class="section coin-sec" id="coin">
+      <div class="wrap">
+        <div class="coin" data-reveal>
+          <div class="coin-copy">
+            <p class="eyebrow">The coin</p>
+            <h2 class="sec-title">The trenches got a town.<br />The town is getting a coin.</h2>
+            <p>Trench County's own token is coming to Solana. The contract address goes up on this page first. If you see a CA anywhere before it's here, it isn't ours.</p>
+            <div class="ca-box">
+              <span class="ca-label">CA</span>
+              <code id="caText">soon</code>
+              <button type="button" id="caCopy" disabled>Copy</button>
+            </div>
+            <p class="fine">In-game ROL, $ and coins are simulated and have no real-world value. The token is separate from the game, and nothing here is financial advice.</p>
+          </div>
+          <figure class="coin-art"><img src="/img/shots/cafe-rain.webp" alt="" loading="lazy" width="900" height="900" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
     <section class="section" id="faq">
       <div class="wrap faq-wrap">
-        <div class="sec-head" data-reveal>
-          <span class="eyebrow">FAQ</span>
-          <h2 class="sec-title">Questions from the trench.</h2>
-        </div>
+        <header class="sec-head" data-reveal>
+          <p class="eyebrow">FAQ</p>
+          <h2 class="sec-title">Asked at the counter.</h2>
+        </header>
         <div class="faq" data-reveal>
-          <details class="panel" open>
-            <summary>What is RBXfun?</summary>
-            <p>RBXfun is a Roblox experience built around memecoin trading, inspired by pump.fun. Players launch their own coins and trade them against each other inside the Executive Internet Cafe.</p>
+          <details open>
+            <summary>What is Trench County?</summary>
+            <p>A free Roblox open-world game built around memecoin trading, inspired by pump.fun. You trade coins other players launch, earn money, and spend it in town. RBXfun is the trading platform inside it.</p>
           </details>
-          <details class="panel">
-            <summary>Is it free to play?</summary>
-            <p>Yes. RBXfun is free on Roblox. Hit Play on the game page and you're in — straight from the Roblox app.</p>
-          </details>
-          <details class="panel">
+          <details>
             <summary>Do I need a crypto wallet?</summary>
-            <p>No. Everything happens inside the game. There's nothing to connect and nothing to install beyond Roblox.</p>
+            <p>No. Everything happens inside Roblox. There's nothing to connect.</p>
           </details>
-          <details class="panel">
+          <details>
+            <summary>Is ROL real crypto?</summary>
+            <p>No. ROL is the town's simulated Solana. Its dollar price follows the real SOL price, kept between $90 and $150, so the outside market moves the game.</p>
+          </details>
+          <details>
+            <summary>Can I buy ROL?</summary>
+            <p>Yes, with Robux: 5 ROL for 150 R$, or the same Robux for that ROL's worth in cash. Tap the + on your Cash or Rolana card, or Add funds in the PC's Wallet.</p>
+          </details>
+          <details>
             <summary>How do I launch a coin?</summary>
-            <p>Sit at any PC in the cafe, open the terminal and hit Launch. Choose a name, a ticker and an icon, and your coin is live for the whole server.</p>
+            <p>Sit at any PC (or press T on foot), open the TC Terminal and hit Launch. Pick a name, a ticker and a head or an image, and link one of your posts. You earn 0.5% of every trade other players make on it.</p>
           </details>
-          <details class="panel">
-            <summary>What does “graduating” mean?</summary>
-            <p>Every coin starts on a bonding curve: buys push the price up, sells push it down. When enough people buy in to fill the curve, the coin graduates — the RBXfun version of making it.</p>
+          <details>
+            <summary>Is the casino real money?</summary>
+            <p>No. MONARCH plays with chips you collect free once a day at the cashier. Chips can't be bought, and they never turn back into $ or ROL.</p>
           </details>
-          <details class="panel">
-            <summary>Is the game finished?</summary>
-            <p>Not yet. RBXfun is in BETA, so expect new features, balance changes and the odd wipe. Favourite the game on Roblox to hear about updates.</p>
+          <details>
+            <summary>What happens when I die?</summary>
+            <p>70% of the cash in your wallet drops where you fell, for anyone to pick up. Money in the bank and in your briefcase is safe.</p>
           </details>
         </div>
       </div>
     </section>
 
-    <!-- ======================= CTA ======================= -->
-    <section class="cta-sec">
-      <div class="wrap">
-        <div class="cta" data-reveal>
-          <div class="studs cta-studs"></div>
-          <div class="cta-crowd" id="ctaCrowd"></div>
-          <div class="cta-copy">
-            <h2>Your PC is waiting.</h2>
-            <p>The cafe never closes. Pull up a chair, launch something stupid and see if the server buys it.</p>
-            <a class="btn btn-gold btn-lg" href="https://www.roblox.com/games/121901103139963/RBXfun" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M5.2 2 2 17.2 18.8 22 22 6.8Zm8.9 13-4.6-1 1-4.6 4.6 1Z"/></svg>
-              Play RBXfun free
-            </a>
-          </div>
-          <span class="cta-coin k1" data-art="coin" data-size="64" data-face="shades"></span>
-          <span class="cta-coin k2" data-art="coin" data-size="44" data-face="dollar"></span>
-          <span class="cta-coin k3" data-art="coin" data-size="52" data-face="smile"></span>
-        </div>
+    <!-- ============ CTA ============ -->
+    <section class="cta">
+      <div class="cta-media" aria-hidden="true"><img src="/img/shots/story-911.webp" alt="" loading="lazy" /></div>
+      <div class="wrap cta-inner" data-reveal>
+        <h2 class="title title-sm">Your PC is waiting.</h2>
+        <p>The cafe never closes. Pull up a chair, launch something stupid and see if the server buys it.</p>
+        <a class="btn btn-light btn-lg" href="https://www.roblox.com/games/121901103139963" target="_blank" rel="noopener">Play Trench County</a>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="wrap foot-row">
+    <div class="wrap foot">
       <div class="foot-brand">
-        <a href="#top" class="brand"><span data-art="logo" data-size="30"></span><span class="brand-word">RBX<span>fun</span></span></a>
-        <p>The memecoin trading game on Roblox.</p>
+        <img src="/img/shots/icon.webp" alt="" width="40" height="40" loading="lazy" />
+        <div><b>Trench County</b><span>Trade memes &middot; Live life</span></div>
       </div>
-      <nav class="foot-links" aria-label="Footer">
-        <a href="#how">How it works</a><a href="#terminal">Terminal</a><a href="#pulse">Pulse</a><a href="#cafe">The Cafe</a><a href="#faq">FAQ</a>
-        <a href="https://www.roblox.com/games/121901103139963/RBXfun" target="_blank" rel="noopener">Play on Roblox ↗</a>
-      </nav>
-    </div>
-    <div class="wrap foot-legal">
-      <p>RBXfun is an independent Roblox experience. Not affiliated with, sponsored or endorsed by Roblox Corporation or pump.fun. Coins, prices and players shown on this site are simulated for illustration.</p>
-      <p>© <span id="yr">2026</span> RBXfun</p>
+      <div class="foot-links">
+        <a href="https://www.roblox.com/games/121901103139963" target="_blank" rel="noopener">Roblox</a>
+        <a href="https://www.roblox.com/communities/14488937" target="_blank" rel="noopener">Community</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <p class="credits">Car bases used under CC BY 4.0 and modified: "Porsche 911 with interior" by n.brizitskaya, "BMW M4 G82 Coupe" by SLBofficial, "GTR-r34" by ARjun.JS, "Chevrolet Corvette C7 Stingray '14" by dgknuldg, "Volvo 240 styled sedan" by Libau Media, all on Sketchfab. Coin image glyphs from game-icons.net (CC BY 3.0). Real makes and badges are not shown in game. Not affiliated with Roblox Corporation.</p>
+      <p class="copy">&copy; 2026 dodo'. RBXfun is the trading platform inside Trench County.</p>
     </div>
   </footer>
 
-  <script src="/js/art.js"></script>
-  <script src="/js/main.js"></script>
+  <script src="/js/heads.js" defer></script>
+  <script src="/js/main.js" defer></script>
 </body>
 </html>
