@@ -53,7 +53,7 @@
         <a href="#faq">FAQ</a>
       </nav>
       <div class="header-actions">
-        <span class="live-pill" title="Contract address coming soon"><i></i> CA soon</span>
+        <button class="live-pill" type="button" data-ca="TC6zummUZeiScVaqX3LrQ89JMqjkdwiErC2rHP8kFTC" title="Copy the $TC contract address" style="cursor:pointer"><i></i> <span>$TC · TC6zu…kFTC</span></button>
         <a class="btn btn-primary btn-sm" href="https://www.roblox.com/games/121901103139963/Trench-County" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M5.2 2 2 17.2 18.8 22 22 6.8Zm8.9 13-4.6-1 1-4.6 4.6 1Z"/></svg>
           Play free
@@ -461,5 +461,6 @@
 
   <script src="/js/art.js"></script>
   <script src="/js/main.js"></script>
+<script>document.querySelectorAll('[data-ca]').forEach(b=>b.addEventListener('click',async()=>{const s=b.querySelector('span'),t=s.textContent;try{await navigator.clipboard.writeText(b.dataset.ca)}catch{const x=document.createElement('textarea');x.value=b.dataset.ca;document.body.appendChild(x);x.select();document.execCommand('copy');x.remove()}s.textContent='Copied';setTimeout(()=>s.textContent=t,1400)}))</script>
 </body>
 </html>
