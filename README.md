@@ -3,9 +3,9 @@
 Landing page for **RBXfun**, the memecoin-trading experience on Roblox.
 Play: https://www.roblox.com/games/121901103139963/RBXfun · Live: https://rbxfun.vercel.app
 
-> **2026-10-21: Trench County content update.** The game is now **Trench County** (RBXfun stays the name of its in-game
+> **2026-10-21: Trench Haven content update.** The game is now **Trench Haven** (RBXfun stays the name of its in-game
 > trading platform). The design below is unchanged and is the site's look: only the copy, brand wordmark, cafe sign art
-> ("Trench / CAFE · TRENCH COUNTY", "OPEN 24/7"), Roblox links and images changed. New: in-game shots in `img/shots/`
+> ("Trench / CAFE · TRENCH HAVEN", "OPEN 24/7"), Roblox links and images changed. New: in-game shots in `img/shots/`
 > (Studio captures with ThumbStage golden lighting), the intro video section (`video/intro.mp4`, `#intro`), a second
 > town section, FAQ on ROL / Robux / the token, car-model credits in the footer, `img/og.jpg`. Later the same day (user: too much
 > scrolling): the intro video sits right under the hero (`#intro`, after the ticker), and the town is one compact place

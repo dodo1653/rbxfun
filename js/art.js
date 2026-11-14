@@ -281,7 +281,7 @@
     <rect x="120" y="92" width="324" height="88" rx="8" fill="#2e1c12" stroke="url(#${id}gold)" stroke-width="5"/>
     <rect x="130" y="101" width="304" height="70" rx="5" fill="none" stroke="#e8c27a" stroke-opacity=".45" stroke-width="1.5"/>
     <text x="282" y="148" text-anchor="middle" font-family="Fredoka,Arial" font-weight="700" font-size="50" fill="url(#${id}gold)" letter-spacing="1">Trench</text>
-    <text x="282" y="166" text-anchor="middle" font-family="Inter,Arial" font-weight="700" font-size="11.5" fill="#e8c27a" letter-spacing="3.4">CAFE · TRENCH COUNTY</text>
+    <text x="282" y="166" text-anchor="middle" font-family="Inter,Arial" font-weight="700" font-size="11.5" fill="#e8c27a" letter-spacing="3.4">CAFE · TRENCH HAVEN</text>
     <rect x="140" y="78" width="20" height="10" fill="#22252e"/><rect x="404" y="78" width="20" height="10" fill="#22252e"/>
     <!-- awning -->
     <path d="M40 206H524L544 240H20Z" fill="url(#${id}aw)"/><path d="M40 206H524L544 240H20Z" fill="#000" opacity=".06"/>
