@@ -1,7 +1,7 @@
 # RBXfun — Website & Design Guide
 
 Landing page for **RBXfun**, the memecoin-trading experience on Roblox.
-Play: https://www.roblox.com/games/121901103139963/RBXfun · Live: https://rbxfun.vercel.app
+Play: https://www.roblox.com/games/121901103139963/Trench-Haven · Live: https://trenchhaven.vercel.app
 
 > **2026-10-21: Trench Haven content update.** The game is now **Trench Haven** (RBXfun stays the name of its in-game
 > trading platform). The design below is unchanged and is the site's look: only the copy, brand wordmark, cafe sign art
