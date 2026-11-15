@@ -461,5 +461,6 @@
 
   <script src="/js/art.js"></script>
   <script src="/js/main.js"></script>
+<script>document.querySelectorAll('[data-ca]').forEach(b=>b.addEventListener('click',async()=>{const s=b.querySelector('span'),t=s.textContent;try{await navigator.clipboard.writeText(b.dataset.ca)}catch{const x=document.createElement('textarea');x.value=b.dataset.ca;document.body.appendChild(x);x.select();document.execCommand('copy');x.remove()}s.textContent='Copied';setTimeout(()=>s.textContent=t,1400)}))</script>
 </body>
 </html>
